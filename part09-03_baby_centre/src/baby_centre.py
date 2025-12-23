@@ -15,4 +15,12 @@ class BabyCentre:
 
     def weigh(self, person: Person):
         # return the weight of the person passed as an argument
-        return -1
+        self.number_of_weigh_ins += 1
+        return person.weight
+    
+    def feed(self,person: Person):
+        person.weight+=1
+        return person.weight
+    
+    def weigh_ins(self):
+        return self.number_of_weigh_ins
