@@ -31,3 +31,73 @@ class WordGame():
         print(f"player 1: {self.wins1}")
         print(f"player 2: {self.wins2}")
 
+
+class LongestWord(WordGame):
+    def __init__(self, rounds):
+        super().__init__(rounds)
+
+    def round_winner(self, player1_word, player2_word):
+        cond = len(player1_word) > len(player2_word)
+        cond2 = len(player1_word) == len(player2_word)
+        return 3 if cond2 else 1 if cond else 2
+    
+
+class MostVowels(WordGame):
+    def __init__(self, rounds):
+        super().__init__(rounds)
+
+    def round_winner(self, player1_word, player2_word):
+        vow_1 = 0
+        vow_2 = 0
+        for letter in player1_word:
+            if letter in 'aeuoi':
+                vow_1 +=1
+
+        for letter in player2_word:
+            if letter in 'aeuoi':
+                vow_2 +=1
+        
+        return 3 if vow_2 == vow_1 else 1 if vow_1>vow_2 else 2
+
+class RockPaperScissors(WordGame):
+    def __init__(self, rounds):
+        super().__init__(rounds)
+
+    def round_winner(self, player1_word, player2_word):
+        if player1_word == 'rock':
+            if player2_word == 'rock':
+                return 3
+            elif player2_word == 'scissors':
+                return 1
+            elif player2_word == 'paper':
+                return 2
+            else:
+                return 1
+            
+        elif player1_word == 'scissors':
+            if player2_word == 'scissors':
+                return 3
+            elif player2_word == 'rock':
+                return 2
+            elif player2_word == 'paper':
+                return 1
+            else:
+                return 1
+            
+        elif player1_word == 'paper':
+            if player2_word == 'paper':
+                return 3
+            elif player2_word == 'rock':
+                return 1
+            elif player2_word == 'scissors':
+                return 2
+            else:
+                return 1
+            
+        else:
+            if player2_word in ['rock', 'paper', 'scissors']:
+                return 2
+            return 3
+            
+        
+

@@ -13,3 +13,23 @@ class MagicPotion:
             print(f"{ingredient[0]} {ingredient[1]} grams")
 
 
+class SecretMagicPotion(MagicPotion):
+    def __init__(self, name, password):
+        super().__init__(name)
+        self._password = password
+        self._ing = []
+
+    def add_ingredient(self, ingredient: str, amount: float, password: str):
+        if self._password == password:
+            self._ing.append((ingredient, amount))
+        else:
+            raise ValueError("Wrong password!")
+    
+    def print_recipe(self, password: str):
+        if self._password == password:
+            print(f'{self._name}:')
+            for ing in self._ing:
+                print(f"{ing[0]} {ing[1]} grams")
+        else:
+            raise ValueError("Wrong password!")
+
