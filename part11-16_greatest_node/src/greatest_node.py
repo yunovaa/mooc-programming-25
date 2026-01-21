@@ -5,3 +5,16 @@ class Node:
         self.value = value
         self.left_child = left_child
         self.right_child = right_child
+
+
+def greatest_node(root: Node):
+
+    max_value = root.value
+
+    if root.left_child is not None:
+        max_value = max(max_value, greatest_node(root.left_child))
+
+    if root.right_child is not None:
+        max_value = max(max_value, greatest_node(root.right_child))
+
+    return max_value
